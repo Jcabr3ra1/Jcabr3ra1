@@ -25,6 +25,18 @@ Construyo aplicaciones que convierten procesos cotidianos en herramientas útile
 
 Actualmente desarrollo **AVISENS**, una plataforma para la gestión y el monitoreo de granjas avícolas. También trabajo en aplicaciones de gestión, APIs educativas y proyectos web para iniciativas comunitarias.
 
+### Enfoque profesional
+
+Me interesan oportunidades de desarrollo **Full Stack, frontend o backend** en las que pueda contribuir a aplicaciones web, APIs e integración de datos, y seguir creciendo con un equipo de desarrollo.
+
+### Qué puedes revisar de mi trabajo
+
+En AVISENS participo en el desarrollo de interfaces web, servicios backend y la integración de dispositivos ESP32. El historial del repositorio permite consultar mis contribuciones y los cambios revisados mediante pull requests.
+
+- [**Mis contribuciones a AVISENS**](https://github.com/Jcabr3ra1/Avisens-Project/commits?author=Jcabr3ra1): cambios y evolución del proyecto.
+- [**Frontend**](https://github.com/Jcabr3ra1/Avisens-Project/tree/main/avisens-frontend) y [**backend**](https://github.com/Jcabr3ra1/Avisens-Project/tree/main/avisens-backend): organización del código y separación de responsabilidades.
+- [**Firmware ESP32**](https://github.com/Jcabr3ra1/Avisens-Project/tree/main/esp32-firmware): integración con el entorno físico.
+
 <a id="proyecto-destacado"></a>
 ## 01 / Proyecto destacado
 
@@ -61,6 +73,21 @@ Me permite trabajar en la organización de módulos, el diseño de APIs, la pres
 
 </td></tr>
 </table>
+
+
+<details>
+<summary><strong>Revisar documentación, arquitectura e instalación</strong></summary>
+
+El README del proyecto explica el problema, los usuarios del sistema, la estructura del repositorio, el stack y los pasos para ejecutar sus componentes.
+
+- [**Leer la documentación de AVISENS**](https://github.com/Jcabr3ra1/Avisens-Project#readme).
+- [**Consultar el modelo de datos**](https://github.com/Jcabr3ra1/Avisens-Project/blob/main/MER.md).
+- [**Conocer el flujo de colaboración**](https://github.com/Jcabr3ra1/Avisens-Project/blob/main/FLUJO-DE-TRABAJO.md).
+- [**Revisar las comprobaciones automáticas**](https://github.com/Jcabr3ra1/Avisens-Project/actions).
+
+**Estado:** proyecto de formación SENA en desarrollo activo. La aplicación web y la bitácora están implementadas; la app Android, las predicciones y la validación física del firmware tienen distintos niveles de avance. El README detalla esas diferencias y las validaciones pendientes.
+
+</details>
 
 <a id="mas-proyectos"></a>
 ## 02 / Explora mis proyectos
