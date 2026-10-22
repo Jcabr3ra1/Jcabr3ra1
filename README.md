@@ -19,6 +19,10 @@ Desarrollo Full Stack con atención a la experiencia de usuario, los datos y la 
 
 ---
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Jcabr3ra1/Jcabr3ra1/output/profile-motion.svg" alt="Interfaces web, APIs y dispositivos IoT conectados con pulsos animados" width="100%" />
+</p>
+
 ### Hola, soy Juan
 
 Construyo aplicaciones que convierten procesos cotidianos en herramientas útiles. Me interesa conectar una interfaz clara con un backend bien organizado y datos que ayuden a entender lo que está pasando.
