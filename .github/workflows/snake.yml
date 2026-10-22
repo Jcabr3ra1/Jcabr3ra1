@@ -34,26 +34,57 @@ jobs:
         shell: python
         run: |
           from pathlib import Path
+          import re
           import xml.etree.ElementTree as ET
           ET.register_namespace('', 'http://www.w3.org/2000/svg')
           ns = '{http://www.w3.org/2000/svg}'
           for path in Path('dist').glob('github-snake*.svg'):
-              root = ET.fromstring(path.read_text())
-              cells = [e for e in root.iter(ns + 'rect') if 'c' in e.get('class', '').split()]
-              x0 = min(float(e.get('x')) for e in cells) - 2
-              y0 = min(float(e.get('y')) for e in cells) - 2
-              width = max(float(e.get('x')) for e in cells) - x0 + 14
-              height = max(float(e.get('y')) for e in cells) - y0 + 14
-              defs = ET.SubElement(root, ns + 'defs')
-              clip = ET.SubElement(defs, ns + 'clipPath', {'id': 'board', 'clipPathUnits': 'userSpaceOnUse'})
-              ET.SubElement(clip, ns + 'rect', {'x': str(x0), 'y': str(y0), 'width': str(width), 'height': str(height)})
-              group = ET.SubElement(root, ns + 'g', {'clip-path': 'url(#board)'})
-              for child in list(root):
-                  if 's' in child.get('class', '').split():
-                      root.remove(child)
-                      group.append(child)
+              old = ET.fromstring(path.read_text())
+              css = ''.join(e.text or '' for e in old.iter(ns + 'style'))
+              palette = re.search(r':root\{([^}]+)\}', css).group(1)
+              levels = dict(re.findall(r'\.c\.(\w+)\{fill:var\((--c\d+)\)', css))
+              cells = [e for e in old.iter(ns + 'rect') if 'c' in e.get('class', '').split()]
+              cols = 1 + int(max(float(e.get('x')) for e in cells) // 16)
+              rows = 1 + int(max(float(e.get('y')) for e in cells) // 16)
+              # Closed, adjacent-cell cycle. Reserve the left column for the return.
+              # An odd-by-odd board cannot have a Hamiltonian cycle; the few remaining
+              # left-edge cells stay displayed with their real contribution colors.
+              right = cols - 1 if cols % 2 else cols - 2
+              route = [(x, 0) for x in range(right + 1)]
+              for x in range(right, 0, -1):
+                  ys = range(1, rows) if (right - x) % 2 == 0 else range(rows - 1, 0, -1)
+                  route.extend((x, y) for y in ys)
+              route.append((0, 1))
+              for i, (x, y) in enumerate(route):
+                  nx, ny = route[(i + 1) % len(route)]
+                  assert 0 <= x < cols and 0 <= y < rows
+                  assert abs(nx - x) + abs(ny - y) == 1, 'Non-adjacent loop'
+              assert len(route) == len(set(route))
+              duration = round(len(route) * .085, 3)
+              root = ET.Element(ns + 'svg', {'viewBox': f'-16 -16 {cols*16+32} {rows*16+32}', 'width': str(cols*16+32), 'height': str(rows*16+32), 'role': 'img'})
+              ET.SubElement(root, ns + 'title').text = 'Contribuciones de GitHub: serpiente con recorrido continuo dentro del tablero'
               style = ET.SubElement(root, ns + 'style')
-              style.text = '@media(prefers-reduced-motion:reduce){*{animation:none!important}}'
+              style.text = ':root{' + palette + '} .cell{stroke:var(--cb);stroke-width:1} @media(prefers-reduced-motion:reduce){animateTransform,animate{display:none}}'
+              for cell in cells:
+                  classes = cell.get('class', '').split()
+                  color = next((levels[c] for c in classes if c in levels), '--ce')
+                  cell.set('class', 'cell')
+                  cell.set('fill', f'var({color})')
+                  cell.set('width', '12')
+                  cell.set('height', '12')
+                  root.append(cell)
+              # Each segment follows the same closed route with a one-cell offset.
+              # Matching first/last values prevents a jump or disappearance at restart.
+              for segment in range(5, -1, -1):
+                  points = route[-segment:] + route[:-segment] if segment else route
+                  points = points + [points[0]]
+                  x, y = points[0]
+                  group = ET.SubElement(root, ns + 'g', {'transform': f'translate({x*16},{y*16})'})
+                  ET.SubElement(group, ns + 'rect', {'x': '2', 'y': '2', 'width': '12', 'height': '12', 'rx': '4', 'fill': 'var(--cs)', 'opacity': str(1 - segment * .11)})
+                  if segment == 0:
+                      ET.SubElement(group, ns + 'circle', {'cx': '10', 'cy': '5', 'r': '1.2', 'fill': '#0d1117'})
+                      ET.SubElement(group, ns + 'circle', {'cx': '10', 'cy': '10', 'r': '1.2', 'fill': '#0d1117'})
+                  ET.SubElement(group, ns + 'animateTransform', {'attributeName': 'transform', 'type': 'translate', 'values': ';'.join(f'{px*16} {py*16}' for px, py in points), 'dur': f'{duration}s', 'repeatCount': 'indefinite', 'calcMode': 'linear'})
               path.write_text(ET.tostring(root, encoding='unicode'))
           Path('dist/profile-motion.svg').write_text('''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 150" width="880" height="150" role="img" aria-labelledby="title desc">
           <title id="title">Web, APIs e IoT</title><desc id="desc">Interfaces, servicios y dispositivos conectados. Animación decorativa.</desc>
