@@ -128,6 +128,7 @@ jobs:
                       ET.SubElement(group, ns + 'circle', {'cx': '10', 'cy': '10', 'r': '1.2', 'fill': '#0d1117'})
                   ET.SubElement(group, ns + 'animateTransform', {'attributeName': 'transform', 'type': 'translate', 'values': ';'.join(f'{px*16} {py*16}' for px, py in points), 'dur': f'{duration}s', 'repeatCount': 'indefinite', 'calcMode': 'linear'})
               path.write_text(ET.tostring(root, encoding='unicode'))
+              path.with_name(path.name.replace('github-snake', 'github-snake-hunt')).write_text(ET.tostring(root, encoding='unicode'))
           Path('dist/profile-motion.svg').write_text('''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 150" width="880" height="150" role="img" aria-labelledby="title desc">
           <title id="title">Web, APIs e IoT</title><desc id="desc">Interfaces, servicios y dispositivos conectados. Animación decorativa.</desc>
           <defs><linearGradient id="line"><stop stop-color="#22c55e"/><stop offset="1" stop-color="#38bdf8"/></linearGradient></defs>
