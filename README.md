@@ -203,9 +203,9 @@ Integración de dispositivos **ESP32** para conectar software con lecturas del e
 Mi actividad pública en GitHub, convertida en una animación que se actualiza diariamente.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Jcabr3ra1/Jcabr3ra1/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Jcabr3ra1/Jcabr3ra1/output/github-snake.svg" />
-  <img alt="Serpiente animada recorriendo mi gráfico de contribuciones de GitHub" src="https://raw.githubusercontent.com/Jcabr3ra1/Jcabr3ra1/output/github-snake.svg" width="100%" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Jcabr3ra1/Jcabr3ra1/output/github-snake-dark.svg?v=2" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Jcabr3ra1/Jcabr3ra1/output/github-snake.svg?v=2" />
+  <img alt="Serpiente animada recorriendo mi gráfico de contribuciones de GitHub" src="https://raw.githubusercontent.com/Jcabr3ra1/Jcabr3ra1/output/github-snake.svg?v=2" width="100%" />
 </picture>
 
 ---
