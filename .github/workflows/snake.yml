@@ -35,6 +35,7 @@ jobs:
         run: |
           from pathlib import Path
           import re
+          from collections import deque
           import xml.etree.ElementTree as ET
           ET.register_namespace('', 'http://www.w3.org/2000/svg')
           ns = '{http://www.w3.org/2000/svg}'
@@ -46,32 +47,73 @@ jobs:
               cells = [e for e in old.iter(ns + 'rect') if 'c' in e.get('class', '').split()]
               cols = 1 + int(max(float(e.get('x')) for e in cells) // 16)
               rows = 1 + int(max(float(e.get('y')) for e in cells) // 16)
-              # Closed, adjacent-cell cycle. Reserve the left column for the return.
-              # An odd-by-odd board cannot have a Hamiltonian cycle; the few remaining
-              # left-edge cells stay displayed with their real contribution colors.
-              right = cols - 1 if cols % 2 else cols - 2
-              route = [(x, 0) for x in range(right + 1)]
-              for x in range(right, 0, -1):
-                  ys = range(1, rows) if (right - x) % 2 == 0 else range(rows - 1, 0, -1)
-                  route.extend((x, y) for y in ys)
-              route.append((0, 1))
+              colors = {}
+              for cell in cells:
+                  pos = (int(float(cell.get('x')) // 16), int(float(cell.get('y')) // 16))
+                  colors[pos] = next((levels[c] for c in cell.get('class', '').split() if c in levels), '--ce')
+              food = {pos for pos, color in colors.items() if color != '--ce'}
+              route = [(0, 0)]
+              remaining = food - {route[0]}
+              def find_path(start, targets, blocked):
+                  queue = deque([start])
+                  previous = {start: None}
+                  while queue:
+                      point = queue.popleft()
+                      if point in targets:
+                          result = []
+                          while previous[point] is not None:
+                              result.append(point)
+                              point = previous[point]
+                          return list(reversed(result))
+                      x, y = point
+                      for neighbor in ((x+1,y), (x,y+1), (x-1,y), (x,y-1)):
+                          nx, ny = neighbor
+                          if 0 <= nx < cols and 0 <= ny < rows and neighbor not in previous and neighbor not in blocked:
+                              previous[neighbor] = point
+                              queue.append(neighbor)
+                  return None
+              while remaining:
+                  # Search the nearest uneaten contribution; do not simply scan rows.
+                  leg = find_path(route[-1], remaining, set(route[-6:-1]))
+                  if leg is None:
+                      leg = find_path(route[-1], remaining, set())
+                  assert leg
+                  route.extend(leg)
+                  remaining.difference_update(leg)
+              if route[-1] != route[0]:
+                  route.extend(find_path(route[-1], {route[0]}, set()) or [])
+              # Close the animation without teleporting the head or its trailing body.
+              if len(route) > 1 and route[-1] == route[0]:
+                  route.pop()
+              if len(route) < 6:
+                  route = [(0,0),(1,0),(2,0),(2,1),(1,1),(0,1)]
+              eaten_at = {}
+              for index, point in enumerate(route):
+                  if point in food:
+                      eaten_at.setdefault(point, index)
+              assert food <= set(eaten_at), 'Every contribution must be eaten'
               for i, (x, y) in enumerate(route):
                   nx, ny = route[(i + 1) % len(route)]
                   assert 0 <= x < cols and 0 <= y < rows
                   assert abs(nx - x) + abs(ny - y) == 1, 'Non-adjacent loop'
-              assert len(route) == len(set(route))
               duration = round(len(route) * .085, 3)
               root = ET.Element(ns + 'svg', {'viewBox': f'-16 -16 {cols*16+32} {rows*16+32}', 'width': str(cols*16+32), 'height': str(rows*16+32), 'role': 'img'})
               ET.SubElement(root, ns + 'title').text = 'Contribuciones de GitHub: serpiente con recorrido continuo dentro del tablero'
               style = ET.SubElement(root, ns + 'style')
-              style.text = ':root{' + palette + '} .cell{stroke:var(--cb);stroke-width:1} @media(prefers-reduced-motion:reduce){animateTransform,animate{display:none}}'
-              for cell in cells:
-                  classes = cell.get('class', '').split()
-                  color = next((levels[c] for c in classes if c in levels), '--ce')
+              style.text = ':root{' + palette + '} .cell{stroke:var(--cb);stroke-width:1} @media(prefers-reduced-motion:reduce){.cell{animation:none!important}}'
+              for index, cell in enumerate(cells):
+                  pos = (int(float(cell.get('x')) // 16), int(float(cell.get('y')) // 16))
+                  color = colors[pos]
                   cell.set('class', 'cell')
                   cell.set('fill', f'var({color})')
                   cell.set('width', '12')
                   cell.set('height', '12')
+                  if pos in eaten_at:
+                      percent = max(.02, eaten_at[pos] / len(route) * 100)
+                      before = max(0, percent - .01)
+                      name = f'eat{index}'
+                      cell.set('style', f'animation:{name} {duration}s linear infinite')
+                      style.text += f'@keyframes {name}' + '{' + f'0%,{before:.4f}%' + '{fill:var(' + color + ')}' + f'{percent:.4f}%,100%' + '{fill:var(--ce)}}'
                   root.append(cell)
               # Each segment follows the same closed route with a one-cell offset.
               # Matching first/last values prevents a jump or disappearance at restart.
