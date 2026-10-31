@@ -99,7 +99,7 @@ El README del proyecto explica el problema, los usuarios del sistema, la estruct
 Abre cada proyecto para conocer qué resuelve y cómo está construido.
 
 <details>
-<summary><strong>🧰 Agent Toolkit</strong> — Contexto compartido para asistentes de IA</summary>
+<summary><strong>🧰 NexaKit</strong> — Contexto compartido para asistentes de IA</summary>
 
 ### El contexto de un proyecto, disponible entre sesiones y asistentes
 
@@ -113,7 +113,7 @@ Incluye una CLI para crear y diagnosticar memorias, revisar cambios integrados e
 
 **Estado:** versión 0.1.0 en desarrollo, con verificación funcional local documentada. Las conexiones con clientes reales requieren comprobación; el lanzamiento automático de agentes sigue pendiente.
 
-[Explorar Agent Toolkit →](https://github.com/Jcabr3ra1/agent-toolkit)
+[Explorar NexaKit →](https://github.com/Jcabr3ra1/nexakit)
 
 </details>
 
