@@ -1,6 +1,6 @@
 <div align="center">
 
-<sub>WEB APPLICATIONS &nbsp; / &nbsp; REST APIs &nbsp; / &nbsp; IoT</sub>
+<sub>FULL STACK &nbsp; / &nbsp; AUTOMATIZACIÓN &nbsp; / &nbsp; IA</sub>
 
 # Juan David Jaller
 
@@ -8,7 +8,7 @@
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&duration=3200&pause=1200&color=22C55E&center=true&vCenter=true&width=650&height=50&lines=Interfaces+que+simplifican+procesos.;APIs+que+conectan+informaci%C3%B3n.;Software+que+conecta+con+el+mundo+real." alt="Interfaces que simplifican procesos. APIs que conectan información. Software que conecta con el mundo real." width="650" />
 
-Desarrollo Full Stack con atención a la experiencia de usuario, los datos y la integración de dispositivos.
+Desarrollo aplicaciones, automatizo procesos e integro chatbots y asistentes con IA.
 
 <a href="https://www.linkedin.com/in/jdcabrera1/"><img src="https://img.shields.io/badge/Conectemos_en_LinkedIn-0A66C2?style=for-the-badge" alt="Conectemos en LinkedIn" /></a>
 <a href="https://github.com/Jcabr3ra1?tab=repositories"><img src="https://img.shields.io/badge/Explorar_repositorios-181717?style=for-the-badge&logo=github&logoColor=white" alt="Explorar repositorios" /></a>
@@ -23,23 +23,26 @@ Desarrollo Full Stack con atención a la experiencia de usuario, los datos y la 
   <img src="https://raw.githubusercontent.com/Jcabr3ra1/Jcabr3ra1/output/profile-motion.svg" alt="Interfaces web, APIs y dispositivos IoT conectados con pulsos animados" width="100%" />
 </p>
 
-### Hola, soy Juan
+### Sobre mí
 
-Construyo aplicaciones que convierten procesos cotidianos en herramientas útiles. Me interesa conectar una interfaz clara con un backend bien organizado y datos que ayuden a entender lo que está pasando.
+Soy ingeniero de sistemas y desarrollador Full Stack. Creo aplicaciones web, APIs y herramientas que conectan información, simplifican tareas y ayudan a resolver necesidades reales.
 
-Actualmente desarrollo **AVISENS**, una plataforma para la gestión y el monitoreo de granjas avícolas. También trabajo en aplicaciones de gestión, APIs educativas y proyectos web para iniciativas comunitarias.
+Mi trabajo abarca interfaces, servicios backend, bases de datos y automatización de procesos. También desarrollo prototipos de chatbots y asistentes con IA, integro modelos de lenguaje con herramientas y exploro flujos de colaboración entre agentes.
 
 ### Enfoque profesional
 
-Me interesan oportunidades de desarrollo **Full Stack, frontend o backend** en las que pueda contribuir a aplicaciones web, APIs e integración de datos, y seguir creciendo con un equipo de desarrollo.
+Me interesan oportunidades en **desarrollo Full Stack, backend, automatización y creación de chatbots y asistentes con IA**. Busco contribuir a soluciones que conecten aplicaciones, servicios y datos para reducir tareas manuales y mejorar la experiencia de las personas.
+
+Combino el desarrollo de APIs e interfaces con la integración de servicios externos, herramientas CLI y flujos asistidos por IA. Me interesa seguir creciendo en un equipo que valore el código mantenible, las pruebas y la utilidad de lo que construye.
 
 ### Qué puedes revisar de mi trabajo
 
-En AVISENS participo en el desarrollo de interfaces web, servicios backend y la integración de dispositivos ESP32. El historial del repositorio permite consultar mis contribuciones y los cambios revisados mediante pull requests.
+Mis repositorios reúnen proyectos de gestión, servicios backend, herramientas para desarrolladores e integración de IA y dispositivos.
 
-- [**Mis contribuciones a AVISENS**](https://github.com/Jcabr3ra1/Avisens-Project/commits?author=Jcabr3ra1): cambios y evolución del proyecto.
-- [**Frontend**](https://github.com/Jcabr3ra1/Avisens-Project/tree/main/avisens-frontend) y [**backend**](https://github.com/Jcabr3ra1/Avisens-Project/tree/main/avisens-backend): organización del código y separación de responsabilidades.
-- [**Firmware ESP32**](https://github.com/Jcabr3ra1/Avisens-Project/tree/main/esp32-firmware): integración con el entorno físico.
+- [**NexaKit**](https://github.com/Jcabr3ra1/nexakit): herramientas CLI, selección de skills y preparación de proyectos para trabajar con asistentes de IA.
+- [**AVISENS**](https://github.com/Jcabr3ra1/Avisens-Project): aplicación web, API, prototipo de asistente conversacional e integración IoT.
+- [**BsltProject**](https://github.com/Jcabr3ra1/BsltProject): servicios para operaciones bancarias, autenticación e integración de datos.
+- [**Más repositorios**](https://github.com/Jcabr3ra1?tab=repositories): aplicaciones de gestión, APIs y proyectos web.
 
 <a id="proyecto-destacado"></a>
 ## 01 / Proyecto destacado
@@ -218,6 +221,6 @@ Conoce más sobre mi trabajo y mi perfil profesional.
 
 [**Conectemos en LinkedIn ↗**](https://www.linkedin.com/in/jdcabrera1/) &nbsp; · &nbsp; [**Ver todos mis proyectos →**](https://github.com/Jcabr3ra1?tab=repositories)
 
-<sub>Juan David Jaller · Full Stack Development · Web + APIs + IoT</sub>
+<sub>Juan David Jaller · Full Stack · Automatización · Chatbots e IA</sub>
 
 </div>
