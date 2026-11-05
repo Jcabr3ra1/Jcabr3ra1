@@ -160,15 +160,17 @@ Aplicación para organizar trabajos, consultar sus estados y hacer seguimiento a
 </details>
 
 <details>
-<summary><strong>⚔️ consumoDjangoApis</strong> — Un universo de datos y aventuras</summary>
+<summary><strong>🏍️ Punto Motos</strong> — Gestión de repuestos y servicios de taller</summary>
 
-### API REST educativa inspirada en World of Warcraft
+### La operación de una tienda y taller de motocicletas
 
-Proyecto de personajes, hermandades y aventuras para trabajar con Python, Django y APIs REST.
+Proyecto para gestionar inventario, compras, ventas, caja y servicios de taller, con liquidación diaria de mecánicos y cierre de mes.
 
-**Tecnologías:** Python · Django.
+**Arquitectura propuesta:** aplicación de escritorio para Windows con React, TypeScript y Tauri 2; backend con Django y Django REST Framework, y base de datos local SQLite.
 
-[Explorar el código →](https://github.com/Jcabr3ra1/consumoDjangoApis)
+**Estado:** documentación funcional y técnica inicial; aplicación pendiente de implementación.
+
+[Explorar el código →](https://github.com/Jcabr3ra1/Punto_Motos)
 
 </details>
 
