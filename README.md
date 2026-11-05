@@ -177,7 +177,7 @@ Proyecto para gestionar inventario, compras, ventas, caja y servicios de taller,
 <a id="tecnologias"></a>
 ## 03 / Mi caja de herramientas
 
-Tecnologías que utilizo en mis proyectos.
+Tecnologías y herramientas presentes en mis proyectos, junto con el stack propuesto para Punto Motos.
 
 **Interfaces web**
 
@@ -185,20 +185,38 @@ Tecnologías que utilizo en mis proyectos.
 
 **Backend y APIs**
 
-<img src="https://skillicons.dev/icons?i=nestjs,python,django,fastapi,java,spring&perline=6" alt="Backend: NestJS, Python, Django, FastAPI, Java y Spring" height="44" />
+<img src="https://skillicons.dev/icons?i=nodejs,nestjs,python,django,fastapi,java,spring&perline=7" alt="Backend: Node.js, NestJS, Python, Django, FastAPI, Java y Spring Boot" height="44" />
+
+APIs REST, autenticación e integración de servicios. Django REST Framework forma parte de la arquitectura propuesta para Punto Motos.
+
+**Automatización y asistentes con IA**
+
+Herramientas CLI con Node.js, preparación de skills y memoria de proyectos en Obsidian, integración mediante **MCP** y flujos de revisión entre **Claude Code, Codex y Antigravity**. Prototipos de chatbots y asistentes con modelos de lenguaje.
 
 <details>
-<summary><strong>Ver herramientas de datos, desarrollo e integración</strong></summary>
+<summary><strong>Ver herramientas de datos, escritorio, desarrollo e integración</strong></summary>
 
 **Datos**
 
-<img src="https://skillicons.dev/icons?i=postgres,prisma,mongodb,firebase&perline=4" alt="PostgreSQL, Prisma, MongoDB y Firebase" height="44" />
+<img src="https://skillicons.dev/icons?i=postgres,prisma,mongodb,firebase,sqlite&perline=5" alt="PostgreSQL, Prisma, MongoDB, Firebase y SQLite" height="44" />
 
-**Desarrollo e integración**
+SQLite está contemplado para el almacenamiento local de Punto Motos.
 
-<img src="https://skillicons.dev/icons?i=git,github,docker,githubactions&perline=4" alt="Git, GitHub, Docker y GitHub Actions" height="44" />
+**Aplicaciones de escritorio**
 
-Integración de dispositivos **ESP32** para conectar software con lecturas del entorno.
+<img src="https://skillicons.dev/icons?i=tauri&perline=1" alt="Tauri" height="44" />
+
+Tauri 2 con React y TypeScript en la arquitectura propuesta para Punto Motos en Windows.
+
+**Desarrollo y entrega**
+
+<img src="https://skillicons.dev/icons?i=git,github,docker,githubactions,vite&perline=5" alt="Git, GitHub, Docker, GitHub Actions y Vite" height="44" />
+
+Control de versiones, pull requests, pruebas automatizadas y comprobaciones de calidad.
+
+**Integración IoT**
+
+Dispositivos **ESP32** para conectar software con lecturas del entorno en AVISENS.
 
 </details>
 
